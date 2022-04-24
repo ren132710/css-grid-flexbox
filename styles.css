@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  font-family: 'SuisseIntl', 'Helvetica', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  font-weight: normal;
+  background-color: #011627;
+  color: white;
+}
+
+.container {
+  display: grid;
+
+  /* grid area layout */
+  /* note: grid area names are case sensitive */
+  /* use '.' to declare no content (add remove the corresponding element from html) */
+  grid-template-areas:
+    'a x b'
+    'c x d';
+
+  /* three columns: col1:200px col2: (portion of remaining space) col3: 200px */
+  grid-template-columns: 200px 1fr 200px;
+
+  /* apportioning equal width rows is implied */
+  /*grid-template-rows: 1fr 1fr;*/
+
+  /* grid takes up the entire visible screen height */
+  height: 100vh;
+}
+
+/* responsive design */
+@media screen and (max-width: 800px) {
+  .container {
+    grid-template-areas:
+      'a b'
+      'x x'
+      'c d';
+    grid-template-columns: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    grid-template-areas:
+      'x x'
+      'a b'
+      'c d';
+    grid-template-columns: auto;
+  }
+}
+
+/* layout the grid areas */
+.l1 {
+  grid-area: a;
+}
+.r1 {
+  grid-area: b;
+}
+.l2 {
+  grid-area: c;
+}
+.r2 {
+  grid-area: d;
+}
+
+.container div {
+  border: 2px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main {
+  grid-area: x;
+  font-size: 3rem;
+  border-width: 4px;
+}
