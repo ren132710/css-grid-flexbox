@@ -88,12 +88,12 @@
 */
 
 /********** alternately, explicitly declare layouts  ********/
-/* 1 is the beginning of the grid (most left column) */
-/* -1 is the end of the grid  (most right column) */
 /*
-  grid-column-start: 1;
-  grid-column-end: -1;
-  */
+1 is the beginning of the grid (most left column)
+-1 is the end of the grid  (most right column)
+grid-column-start: 1;
+grid-column-end: -1;
+*/
 
 .grid-item-1 {
   grid-column: 1 / -1;
@@ -242,18 +242,12 @@
 html {
   margin: 0;
   background-color: #888;
-
-  /* height: 100%; */
-  /* grid takes up the entire visible screen height */
-  /* height: 100vh; */
-  /* width implicitly matches height so does not need to be declared */
-  /* width: 100vw; */
 }
 
 .grid-container {
   position: relative;
   padding: 20px;
-  width: 100%;
+  height: 100vh;
 }
 
 .grid-item {
