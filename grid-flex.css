@@ -1,0 +1,315 @@
+.grid-container {
+  /********** Basic Grid Setup ********/
+  /*
+  grid: generates a block-level grid
+  inline-grid: generates an inline-level grid
+  */
+  display: grid;
+
+  /* set absolute sizes for columns */
+  grid-template-columns: 200px 250px;
+
+  /* set relative size for columns, based on portion of remaining space */
+  /* fr = portion of remaining space */
+  /* grid-template-columns: 1fr 1.5fr; */
+
+  /* repeat syntax: 5 columns, each column 100px wide */
+  /* grid-template-columns: repeat(5, 100px); */
+
+  /* set height of initial row */
+  /* grid-template-rows: 200px; */
+
+  /* automatically set height of subsequent rows to 150px */
+  /* grid-auto-rows: 150px; */
+
+  /* minmax: min row size = 150px; max row size = auto grow height to accommodate content */
+  grid-auto-rows: minmax(150px, auto);
+
+  /* create space between rows and columns */
+  /* grid-row-gap: 10px; */
+  /* grid-column-gap: 10px; */
+  gap: 6px;
+
+  /********** Aligning grid inside the container, and grid items inside the grid ********/
+
+  /*
+  Align grid inside the grid container, default = stretch
+    - Sometimes the total size of your grid might be less than the size of its grid container.
+    - This could happen if all of your grid items are sized with non-flexible units like px.
+    - In this case you can set the alignment of the grid within the grid container.
+    - justify-content aligns the grid along the inline (row) axis
+    - align-content which aligns the grid along the block (column) axis).
+  */
+  justify-content: stretch;
+  align-content: stretch;
+
+  /*
+  Align grid items within their grid areas
+   - justify-items aligns grid items along the inline (row) axis 
+   - align-items aligns along the block (column) axis)
+   - stretch = default
+  */
+  justify-items: stretch;
+  align-items: stretch;
+}
+
+/***************** Grid Template Areas *******************/
+/* grid template areas - label areas of the grid */
+/* The syntax itself provides a visualization of the structure of the grid. */
+/* Use a period sign to refer to a grid item with no name. */
+
+/* Example
+    - map area labels to class selectors
+    - include @media for responsive design
+
+  .container {
+   display: grid;
+   grid-template-areas:
+    'a x b'
+    'c x d';
+   grid-template-columns: 200px 1fr 200px;
+   height: 100vh;
+  }
+  
+  @media screen and (max-width: 800px) {
+    .container {
+      grid-template-areas:
+        'a b'
+        'x x'
+        'c d';
+    }
+  }
+  
+  .left-top { grid-area: a; }
+  .right-top { grid-area: b; }
+  .left-bottom { grid-area: c; }
+  .right-bottom { grid-area: d; }
+  .main-content { grid-area: x; }
+*/
+
+/********** alternately, explicitly declare layouts  ********/
+/* 1 is the beginning of the grid (most left column) */
+/* -1 is the end of the grid  (most right column) */
+/*
+  grid-column-start: 1;
+  grid-column-end: -1;
+  */
+
+.grid-item-1 {
+  grid-column: 1 / -1;
+}
+
+.grid-item-2 {
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+.grid-item-3 {
+  grid-row: 2 / 6;
+}
+
+.grid-item-4 {
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+.grid-item-5 {
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+.grid-item-6 {
+  grid-column: span 2;
+}
+
+/*set behavior on individual grid items via the justify-self property. */
+
+.grid-item-5 {
+  align-self: start;
+}
+
+/****************** Grid and Flexbox ******************************/
+/*
+* TIP:
+* Flexbox and Grid were designed to work together.
+* Using Flexbox containers inside of your different grid items is one of the best ways to layout a site
+*/
+.flexbox1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.flexbox2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.flex-child-1 {
+  border: 1px solid #333;
+  font-size: 0.75em;
+  font-weight: bold;
+  background-color: lightblue;
+  padding: 2px;
+  margin: 1px;
+}
+
+.flex-child-2 {
+  border: 1px solid #333;
+  font-size: 0.75em;
+  font-weight: bold;
+  background-color: lightblue;
+  padding: 2px;
+  margin: 1px;
+}
+
+.flex-child-3 {
+  border: 1px solid #333;
+  font-size: 0.75em;
+  font-weight: bold;
+  background-color: lightblue;
+  padding: 2px;
+  margin: 1px;
+  align-self: flex-end;
+}
+
+.flex-child-4 {
+  border: 1px solid #333;
+  font-size: 0.75em;
+  font-weight: bold;
+  background-color: lightblue;
+  padding: 2px;
+  margin: 1px;
+}
+
+.flex-child-5 {
+  border: 1px solid #333;
+  font-size: 0.75em;
+  font-weight: bold;
+  background-color: lightblue;
+  padding: 2px;
+  margin: 1px;
+}
+
+.flex-child-6 {
+  border: 1px solid #333;
+  font-size: 0.75em;
+  font-weight: bold;
+  background-color: lightblue;
+  padding: 2px;
+  margin: 1px;
+}
+
+.flex-child-7 {
+  border: 1px solid #333;
+  font-size: 0.75em;
+  font-weight: bold;
+  background-color: lightblue;
+  padding: 2px;
+  margin: 1px;
+  align-self: flex-end;
+}
+
+.flex-child-8 {
+  border: 1px solid #333;
+  font-size: 0.75em;
+  font-weight: bold;
+  background-color: lightblue;
+  padding: 2px;
+  margin: 1px;
+}
+
+/*
+ * Background Styles
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+* {
+  font-family: Raleway;
+}
+
+/* border-box: width, height, properties include content, padding and border */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  background-color: #888;
+
+  /* height: 100%; */
+  /* grid takes up the entire visible screen height */
+  /* height: 100vh; */
+  /* width implicitly matches height so does not need to be declared */
+  /* width: 100vw; */
+}
+
+.grid-container {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+}
+
+.grid-item {
+  /* position must be relative to govern before/after content */
+  position: relative;
+  font-size: 20px;
+  padding: 20px;
+  padding-top: 50px;
+  background-color: #379ad6;
+  color: #222;
+  border: 1px solid white;
+}
+
+/* alternate background color of odd grid items */
+.grid-item:nth-child(odd) {
+  background-color: #5bbdfa;
+}
+
+/* label the grid items using ::before/after attributes */
+.grid-item::before {
+  content: 'Grid Item';
+  position: absolute;
+  font-size: 20px;
+  font-weight: bold;
+  top: 10px;
+  left: 15px;
+}
+
+.grid-item::after {
+  position: absolute;
+  font-size: 20px;
+  top: 10px;
+  right: 15px;
+  font-weight: bold;
+}
+
+.grid-item-1::after {
+  content: '1';
+}
+
+.grid-item-2::after {
+  content: '2';
+}
+
+.grid-item-3::after {
+  content: '3';
+}
+
+.grid-item-4::after {
+  content: '4';
+}
+
+.grid-item-5::after {
+  content: '5';
+}
+
+.grid-item-6::after {
+  content: '6';
+}
