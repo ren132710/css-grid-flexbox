@@ -29,6 +29,7 @@
 }
 
 /* responsive design */
+/* if [device width] is less than or equal to 800px */
 @media screen and (max-width: 800px) {
   .container {
     grid-template-areas:
@@ -48,6 +49,12 @@
     grid-template-columns: auto;
   }
 }
+
+/*
+'if [device width] is greater than or equal to 600px'
+@media only screen and (min-width: 600px)  {...}
+@media all and (min-width: 600px)  {...}
+*/
 
 /* layout the grid areas */
 .l1 {
