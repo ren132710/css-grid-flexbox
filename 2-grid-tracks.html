@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Template Areas</title>
+    <style>
+      .container {
+        display: grid;
+        grid-template-columns: 100px 50px 75px;
+        /* grid-template-rows: 50px 100px; */
+
+        /* autosize rows to content ~ min height, auto fit to content*/
+        grid-template-rows: 50px minmax(100px, auto);
+
+        /* fractional units */
+        /* similar to flex grow/shrink */
+        /* grid-template-columns: 1fr 2fr 1fr; */
+
+        /* fractional units - create 4 equal sized columns */
+        /* grid-template-columns: repeat(4, 1fr); */
+
+        /* left/right sidebars with equal sized content */
+        grid-template-columns: 50px repeat(2, 1fr) 50px;
+
+        /* create gaps between rows and columns */
+        /* row-gap: 5px; */
+        /* column-gap: 5px; */
+        gap: 5px;
+      }
+
+      .item {
+        border: 1px solid #333;
+        background-color: #777;
+        color: yellow;
+      }
+
+      .item1 {
+        /* span columns, explicitly */
+        /* grid-column-start: 1; */
+        /* grid-column-end: 4; */
+
+        /* span all columns in grid to create a header */
+        grid-column: 1 / -1;
+      }
+
+      .item2 {
+        /* span rows, explicitly */
+        grid-row: 2 / 4;
+      }
+
+      .item5 {
+        /* span rows, alt syntax */
+        grid-row: span 2;
+        /* tell grid to put the item in a specific column */
+        grid-column: 4;
+      }
+
+      .item8 {
+        /* easily create a footer, similar to header */
+        grid-column: 1 / -1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item item1">1</div>
+      <div class="item item2">2</div>
+      <div class="item item3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum a adipisci tenetur facilis cumque totam amet
+        voluptatibus maxime sapiente. Eos officia quo cumque amet eius voluptatum eligendi quod explicabo reprehenderit!
+      </div>
+      <div class="item item4">4</div>
+      <div class="item item5">5</div>
+      <div class="item item6">6</div>
+      <div class="item item7">7</div>
+      <div class="item item8">8</div>
+    </div>
+  </body>
+</html>

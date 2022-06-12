@@ -30,32 +30,28 @@
   /* grid-column-gap: 10px; */
   gap: 6px;
 
-  /********** Aligning grid inside the container, and grid items inside the grid ********/
+  /********** Aligning grid inside the container, and grid items inside their cells/tracks ********/
 
   /*
-  Align grid inside the grid container, default = stretch
+    Align grid items inside the grid container
     - Sometimes the total size of your grid might be less than the size of its grid container.
     - This could happen if all of your grid items are sized with non-flexible units like px.
     - In this case you can set the alignment of the grid within the grid container.
     - justify-content aligns the grid along the inline (row) axis
     - align-content which aligns the grid along the block (column) axis).
+    - default = stretch; start, end, center, space-between, space-around, space-evenly
   */
-
-  /* when grid size is less than grid container (defaults) */
-  /* justify-content: stretch; */
-  /* align-content: center; */
-
-  justify-content: stretch;
-  align-content: stretch;
+  justify-content: center;
+  align-content: space-around;
 
   /*
-  Align grid items within their grid areas
-   - justify-items aligns grid items along the inline (row) axis 
-   - align-items aligns along the block (column) axis)
-   - stretch = default
+    Align grid items within their individual cells
+    - justify-items aligns grid items along the inline (row) axis, horizontally
+    - align-items aligns along the block (column) axis), vertically
+    - default = stretch
   */
   justify-items: stretch;
-  align-items: stretch;
+  align-items: start;
 }
 
 /***************** Grid Template Areas *******************/

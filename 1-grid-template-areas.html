@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Template Areas</title>
+    <style>
+      .container {
+        display: grid;
+        grid-template-columns: 100px 50px 75px;
+        grid-template-rows: 50px 100px;
+        /* create named sections inside grid container */
+        grid-template-areas:
+          'header header header'
+          /* . period denotes anything */
+          /* without the ., the grid is unable to render properly */
+          /* because of unequal number does not make a box */
+          'sidebar content .'
+          /* content can span multiple rows, similar to multiple columns*/
+          'sidebar content .';
+
+        /* TIP: using @mediaQueries, you can rearrange the grid areas */
+        /* and stack vertically as screen width narrows */
+      }
+
+      .item {
+        border: 1px solid #333;
+        background-color: #777;
+        color: yellow;
+      }
+
+      .item1 {
+        /* area names are not quoted */
+        grid-area: content;
+      }
+
+      .item2 {
+        grid-area: header;
+      }
+
+      .item6 {
+        grid-area: sidebar;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item item1">1</div>
+      <div class="item item2">2</div>
+      <div class="item item3">3</div>
+      <div class="item item4">4</div>
+      <div class="item item5">5</div>
+      <div class="item item6">6</div>
+      <div class="item item7">7</div>
+      <div class="item item8">8</div>
+    </div>
+  </body>
+</html>

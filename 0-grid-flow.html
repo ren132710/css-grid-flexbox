@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Flow</title>
+    <style>
+      .container {
+        display: grid;
+
+        /* single line grid specification ~ rows / columns */
+        /* grid-template: 50px 100px / 100px 50px; */
+
+        /* specify columns and rows individually */
+        grid-template-columns: 100px 50px;
+        grid-template-rows: 50px 100px;
+
+        /* auto size rows not defined by template rows, otherwise grid defaults row height*/
+        /* grid-auto-rows: 75px; */
+
+        /* you can define any pattern of automatically generated rows*/
+        /* grid-auto-rows: 25px 50px 75px; */
+        /* same for columns */
+        /* grid-auto-columns: 25px 50px 75px; */
+
+        /* tell grid in which direction to expand or flow, default = row */
+        /* when column is specified, grid fills by column instead of by row */
+        grid-auto-flow: column;
+        grid-auto-columns: 150px 100px;
+      }
+
+      .item {
+        border: 1px solid #333;
+        background-color: #777;
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item item1">1</div>
+      <div class="item item2">2</div>
+      <div class="item item3">3</div>
+      <div class="item item4">4</div>
+      <div class="item item5">5</div>
+      <div class="item item6">6</div>
+      <div class="item item7">7</div>
+      <div class="item item8">8</div>
+    </div>
+  </body>
+</html>
