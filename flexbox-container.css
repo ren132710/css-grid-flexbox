@@ -1,45 +1,46 @@
-.flexbox-container {
-    height: 600px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    row-gap: 60px;
-    column-gap: 15px;
+html {
+  height: 100%;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.flexbox-item {
-    
+.flexbox-container {
+  height: 500px;
+  position: relative;
+  background-color: yellow;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 70px;
+  column-gap: 15px;
 }
 
 .flexbox-item-1 {
-    align-self: flex-start;
+  align-self: flex-start;
+  min-height: 100px;
+  min-width: 100px;
 }
 
 .flexbox-item-2 {
-    /* item will not shrink when the container shrinks */
-    flex-shrink: 0;
+  /* item will not shrink when the container shrinks */
+  min-height: 200px;
+  flex-shrink: 0;
+  align-self: stretch;
 }
 
 .flexbox-item-3 {
-    /* item will grow when the container grows */
-    flex-grow: 1;
-}
+  /* item will grow when the container grows */
 
+  min-height: 300px;
+  flex-grow: 1;
+  min-width: 200px;
+}
 
 /* Background Styles */
-html {
-    height: 100%;
-    background-color: #333;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-}.flexbox-container {
-    position: relative;
-    background-color: yellow;
-}
 
 /*In CSS, ::before creates a pseudo-element that is the first child of the selected element.
 * It is often used to add cosmetic content to an element with the content property.
@@ -47,67 +48,54 @@ html {
 */
 
 .flexbox-container::before {
-    content: 'Flexbox Container';
-    position: absolute;
-    top: -40px;
-    color: yellow;
-    font-size: 2em;
+  content: 'Flexbox Container';
+  position: absolute;
+  top: -40px;
+  color: yellow;
+  font-size: 2em;
 }
 
 .flexbox-item {
-    /* position relative puts the item before/after content inside the flexbox-item div box
+  /* position relative puts the item before/after content inside the flexbox-item div box
     The element is positioned according to the normal flow of the document, 
     and then offset relative to itself based on the values of top, right, bottom, and left.
     The offset does not affect the position of any other elements; thus, 
     the space given for the element in the page layout is the same as if position were static.
     */
-    position: relative;
-    width: 200px;
-    margin: 10px;
-    border: 3px solid #333;
-    background-color: #dfdfdf;
-    display: flex;
-    justify-content: center;
+  position: relative;
+  width: 200px;
+  margin: 10px;
+  border: 3px solid #333;
+  background-color: #dfdfdf;
+  display: flex;
+  justify-content: center;
 }
 
 .flexbox-item::before {
-    content: 'Flexbox Item';
-    position: absolute;
-    color: black;
-    font-size: 25px;
-    top: 10px;
-    left: 15px;
+  content: 'Flexbox Item';
+  position: absolute;
+  color: black;
+  font-size: 25px;
+  top: 10px;
+  left: 15px;
 }
 
 .flexbox-item::after {
-    position: absolute;
-    color: black;
-    font-size: 25px;
-    top: 10px;
-    right: 15px;
+  position: absolute;
+  color: black;
+  font-size: 25px;
+  top: 10px;
+  right: 15px;
 }
-
-.flexbox-item-1 {
-    min-height: 100px;
-}
-
-.flexbox-item-2 {
-    min-height: 200px;
-}
-
-.flexbox-item-3 {
-    min-height: 300px;
-}
-
 
 .flexbox-item-1::after {
-    content: '1';
+  content: '1';
 }
 
 .flexbox-item-2::after {
-    content: '2';
+  content: '2';
 }
 
 .flexbox-item-3::after {
-    content: '3';
+  content: '3';
 }

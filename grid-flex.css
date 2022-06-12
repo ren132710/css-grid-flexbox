@@ -40,6 +40,11 @@
     - justify-content aligns the grid along the inline (row) axis
     - align-content which aligns the grid along the block (column) axis).
   */
+
+  /* when grid size is less than grid container (defaults) */
+  /* justify-content: stretch; */
+  /* align-content: center; */
+
   justify-content: stretch;
   align-content: stretch;
 

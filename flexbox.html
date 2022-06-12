@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Essentials</title>
+    <style>
+      .container {
+        display: flex;
+        /* display the flex container inline */
+        /* display: inline-flex; */
+        background-color: #ccc;
+        border: 1px solid black;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        row-gap: 2rem;
+        /* column-gap: 20px; */
+
+        /* align the flex items within the container when container is large */
+        /* align-content: space-between; */
+      }
+
+      .item {
+        border: 1px solid #333;
+        background-color: #777;
+        width: 75px;
+        color: yellow;
+        /* margin does not collapse in the flexbox context */
+        margin: 0.75rem;
+      }
+
+      .item1 {
+        /* min-width: 50px; */
+        min-height: 50px;
+        /* adjust cross-axis position for particular element */
+        align-self: flex-end;
+
+        /* item will grow when the container grows */
+        /* item will take one part of available space */
+        /* flex: 1 0 0; = grow, shrink, basis */
+        /* flex-grow: 1; */
+        /* use flex basis to reset the size calc so
+            item2 is 2x item1, regardless of width property */
+        /* flex-basis: 0; */
+
+        /* change the order of the flex items */
+        /* although using order is not recommended as this will cause
+        items to be out of sync with the tab or screen reader order of the html */
+        /* order: 3; */
+      }
+
+      .item2 {
+        /* min-width: 60px; */
+        min-height: 100px;
+        /* item will take two parts of available space */
+        /* flex-grow: 2; */
+        /* flex-basis: 0; */
+        /* order: 1; */
+      }
+
+      .item3 {
+        min-height: 150px;
+        /* item will not shrink when the container shrinks */
+        /* if we have two item with flex-shrink of 1 and 3,
+            3 will shrink three times as fast as 1 */
+        flex-shrink: 0;
+        /* order: 2; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item item1">1</div>
+      <div class="item item2">2</div>
+      <div class="item item3">3</div>
+    </div>
+    <span>this is a span</span>
+  </body>
+</html>
