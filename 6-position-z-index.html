@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position</title>
+    <style>
+      /* position: static; */
+      /* HTML elements are positioned static by default. */
+
+      body {
+        margin: 0;
+        font-family: Cambria;
+        height: 200vh;
+        margin: 0;
+        position: relative;
+      }
+      /* position: relative; */
+      /* setting position relative at container level */
+      /* provides position context for positioned children */
+      .parent1 {
+        /* margin-top: 2rem; */
+        padding: 0.25rem;
+        background-color: lightskyblue;
+        position: relative;
+        height: 30vh;
+        z-index: 5;
+        overflow: auto;
+      }
+
+      /* position: relative; */
+      /* enables top, left, right, bottom properties */
+      /* relative to elem's normal doc flow position */
+      .child1 {
+        padding: 0.25rem;
+        background-color: lightcoral;
+        /* position: relative; */
+        /* top: 5px; */
+        /* left: 5px; */
+        /* right: 5px; */
+        /* bottom: 5px; */
+      }
+
+      /* position: absolute; */
+      /* removes element from  document flow */
+      /* An element with position: absolute; is positioned relative to the nearest */
+      /* positioned ancestor (instead of positioned relative to the viewport, like fixed).*/
+      /* if no positioned ancestors, then positions relative to document body */
+      .child2 {
+        padding: 0.25rem;
+        background-color: lightgreen;
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        /* right: 5px; */
+        /* bottom: 5px; */
+      }
+
+      /* position: fixed; */
+      /* fixes the position relative to the viewport */
+      /* always stays in the same place, even when page is scrolled */
+      .child3 {
+        padding: 0.25rem;
+        background-color: peru;
+        color: white;
+        position: fixed;
+        /* top: 60px; */
+        right: 25px;
+        font-size: 0.5rem;
+
+        /* use z-index to keep element visible */
+        /* when scrolling over other elements */
+        /* however, limited by the stacking context of the parent */
+        z-index: 10;
+      }
+
+      /* position: sticky; */
+      /* An element with position: sticky; is positioned based on the user's scroll position. */
+      /* TIP: Great to use for headers of lists and tables */
+      /* NOTE: you must specify a value for one of the position properties */
+      /* NOTE: the parent container must have a height */
+      .child4 {
+        padding: 0.25rem;
+        background-color: orchid;
+        color: white;
+        position: sticky;
+
+        top: 5px;
+      }
+
+      /* z-index */
+      /* default: z-index: 0; */
+      /* stacking context: set by position:relative; of parent */
+      /* grid and flex also set their own stacking context */
+      .parent2 {
+        margin-top: 1rem;
+        padding: 0.25rem;
+        background-color: lightskyblue;
+        position: relative;
+        z-index: 6;
+      }
+
+      .child5 {
+        padding: 0.25rem;
+        background-color: lightcoral;
+      }
+
+      .child6 {
+        padding: 0.25rem;
+        background-color: lightgreen;
+      }
+
+      .child7 {
+        padding: 0.25rem;
+        background-color: peru;
+      }
+
+      .child8 {
+        padding: 0.25rem;
+        background-color: orchid;
+        color: white;
+      }
+
+      .fixed {
+        padding: 0.25rem;
+        background-color: purple;
+        position: fixed;
+        left: 30%;
+        right: 30%;
+        color: white;
+        z-index: 100;
+        text-align: center;
+      }
+
+      .header {
+        position: relative;
+        z-index: 1000;
+        height: 10vh;
+        color: white;
+      }
+
+      .nav-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        background-color: #333;
+      }
+
+      .nav-list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style-type: none;
+      }
+
+      .nav-list a {
+        text-decoration: none;
+        margin-left: 1rem;
+        color: white;
+      }
+
+      .nav-list a:hover {
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <nav class="nav-bar">
+        <span>JAWA</span>
+        <ul class="nav-list">
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Docs</a></li>
+          <li><a class="btn" href="#">Settings</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="fixed">Fixed, z-index above Containers</div>
+    <div class="parent1">
+      Parent
+      <div class="child1">1</div>
+      <div class="child2">2- absolute wrt container</div>
+      <div class="child3">
+        3- fixed, z-index: parent1 context <br />
+        <br />
+        note: document flow positions this fixed element *below* fixed elements defined above this element
+      </div>
+      <div class="child4">4- sticky</div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque libero tenetur aliquam cumque adipisci
+        impedit natus fugiat veniam adipisci aliquam amet reprehenderit quas ullam, pariatur exercitationem porro
+        perferendis, eos ducimus totam ipsam?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque libero tenetur aliquam cumque adipisci
+        impedit natus fugiat veniam adipisci aliquam amet reprehenderit quas ullam, pariatur exercitationem porro
+        perferendis, eos ducimus totam ipsam?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque libero tenetur aliquam cumque adipisci
+        impedit natus fugiat veniam adipisci aliquam amet reprehenderit quas ullam, pariatur exercitationem porro
+        perferendis, eos ducimus totam ipsam?
+      </p>
+    </div>
+    <div class="parent2">
+      Parent
+      <div class="child5">5</div>
+      <div class="child6">6</div>
+      <div class="child7">7</div>
+      <div class="child8">8</div>
+    </div>
+  </body>
+</html>
