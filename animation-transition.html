@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transition</title>
+    <style>
+      .div {
+        background-color: red;
+        height: 100px;
+        width: 100px;
+        color: white;
+        font-size: 0.75rem;
+        text-align: center;
+        /* transition: all 1s cubic-bezier(0.46, -0.09, 0.8, 0.51) 0.3s; */
+        /* transition-property: all;
+        transition-duration: 2s;
+        transition-timing-function: cubic-bezier(0.46, -0.09, 0.8, 0.51);
+        transition-delay: 0.3s; */
+
+        /* specifying properties individually */
+        transition: color 1s, background-color 3s;
+        transition-property: color, background-color;
+        transition-duration: 1s;
+        /* cubic-bezier presets: ease-in, ease-out, ease-in-out */
+        transition-timing-function: ease-in;
+
+        /* you can experiment with cubic-bezier in chrome tools */
+      }
+
+      .div:hover {
+        background-color: green;
+        color: black;
+      }
+      .container {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 100px;
+      }
+
+      .btn {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 0.5em 1em;
+        border-radius: 0.3em;
+        color: white;
+      }
+
+      .btn-hide {
+        /* opacity: .7; */
+        background-color: hsl(200, 100%, 80%);
+      }
+
+      .btn-hide:hover {
+        /* opacity: 1; */
+        background-color: hsl(200, 100%, 40%);
+        /* transition-duration: 3s; */
+        transition: background-color 3000ms;
+      }
+
+      .btn-hide:focus {
+        /* onClick, hide the button */
+        /* opacity: 0; */
+        background-color: hsl(200, 100%, 100%);
+        /* transition-duration: 0.1s; */
+        transition: background-color 100ms;
+      }
+
+      .btn-change-color {
+        background-color: hsl(200, 100%, 50%);
+      }
+
+      .btn-change-color:focus {
+        background-color: hsl(20, 100%, 50%);
+        color: #333;
+        /* transition-duration: 0.5s; */
+        transition: background-color 0.5s, color 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div">cubic-bezier</div>
+    <div class="container">
+      <button class="btn btn-hide">Click Me to Hide</button>
+      <button class="btn btn-change-color">Click Me to Change Color</button>
+    </div>
+  </body>
+</html>
