@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Negative and Auto Margins</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      /* things you can do with margins, but not with padding */
+      /* negative and auto margins */
+
+      /* auto margin: a way to center an element */
+      /* NOTE: Margin auto works with height only if child is absolute positioned inside parent. */
+      /* For this reason auto margins are really only useful for widths. */
+      .div1 {
+        /* centers div left-right in the containing body */
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        opacity: .6;
+      }
+
+       /* negative margins: a way to bring adjacent elements closer together */
+      .div2 {
+        /* divs overlap by -15px */
+        margin: -15px 0;
+        /* shifts element closer to the left side of screen/body */
+        margin-left: -5px;
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        opacity: .6;
+      }
+
+      .div3 {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        opacity: .6;
+      }  
+    </style>
+  </head>
+  <body>
+      <div class="div1"></div>
+      <div class="div2"></div>
+      <div class="div3"></div>
+    </div>
+  </body>
+</html>
