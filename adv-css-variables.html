@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Properties</title>
+    <style>
+      /* custom properties, aka css variables, cascading variables */
+      /* custom properties make it easy to globally change repeated values */
+      /* e.g., in a complex website, the same color may be used in hundreds of places */
+      /* typically, css variables are defined on the root element (e.g., :root, HTML) */
+      :root {
+        /* think of these as global variables */
+        --background-color: white;
+        --heading-background: #0070f3;
+        --heading-font: white;
+        --primary-color: #333;
+        --margin-primary: 0;
+        --margin-secondary: 1rem;
+      }
+      body {
+        /* TODO: Does not work with background-color property, for some reason */
+        /* background-color: var(--background-color); */
+        background: var(--background-color);
+        color: var(--primary-color);
+
+        /* you can specify a default value with the 2nd param */
+        margin: var(--margin-primary, 20px);
+        /* you can also override the global variable and declare locally */
+        --margin-primary: 5px;
+      }
+
+      h2 {
+        background-color: var(--heading-background);
+        color: var(--heading-font);
+        padding: 0.5rem;
+      }
+
+      p {
+        margin: var(--margin-secondary);
+      }
+
+      .theme-container {
+        margin-top: 0.5rem;
+        border: 1px solid var(--primary-color);
+        width: 50vw;
+      }
+
+      .title {
+        text-align: start;
+      }
+
+      input[type='radio'],
+      label {
+        vertical-align: middle;
+        padding: 5px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Heading</h2>
+    <p>Paragraph 1</p>
+    <p>Paragragh 2</p>
+    <button>console.log</button>
+    <div class="theme-container">
+      <p class="title">Choose theme</p>
+      <input type="radio" name="theme" id="light" value="light" checked />
+      <label for="day">Day</label> <br />
+      <input type="radio" name="theme" id="morning" value="morning" />
+      <label for="morning">Morning</label><br />
+      <input type="radio" name="theme" id="sunshine" value="sunshine" />
+      <label for="sunshine">Sunshine</label><br />
+      <input type="radio" name="theme" id="new-moon" value="new-moon" />
+      <label for="new-moon">New Moon</label><br />
+      <input type="radio" name="theme" id="dusk" value="dusk" />
+      <label for="dusk">Dusk</label><br />
+      <input type="radio" name="theme" id="winter" value="winter" />
+      <label for="winter">Winter</label><br />
+    </div>
+    <script>
+      //access css variables using javascript
+      const themes = [
+        {
+          name: 'light',
+          colors: {
+            background: 'rgba(243, 241, 243, 1)',
+            headingBackground: '#0070f3',
+            headingFont: 'white',
+            primaryColor: '#333',
+          },
+        },
+        {
+          name: 'morning',
+          colors: {
+            background: 'linear-gradient(to right, rgba(243, 241, 243, 1), rgba(135, 206, 250, 1))',
+            headingBackground: '#0070f3',
+            headingFont: 'white',
+            primaryColor: '#333',
+          },
+        },
+        {
+          name: 'sunshine',
+          colors: {
+            background: 'linear-gradient(to right, rgba(251, 244, 138, 1), rgba(135, 206, 250, 1))',
+            headingBackground: '#0070f3',
+            headingFont: 'white',
+            primaryColor: '#333',
+          },
+        },
+        {
+          name: 'new-moon',
+          colors: {
+            background: 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.85))',
+            headingBackground: '#777',
+            headingFont: 'white',
+            primaryColor: 'white',
+          },
+        },
+        {
+          name: 'dusk',
+          colors: {
+            background: 'linear-gradient(to right, rgba(4, 13, 28, 1), rgba(135, 206, 250, 1))',
+            headingBackground: '#777',
+            headingFont: 'white',
+            primaryColor: 'white',
+          },
+        },
+        {
+          name: 'winter',
+          colors: {
+            background: 'linear-gradient(to right, rgba(91, 44, 111, 1), rgba(135, 206, 250, 1))',
+            headingBackground: '#777',
+            headingFont: 'white',
+            primaryColor: 'white',
+          },
+        },
+      ]
+
+      //console.log the property value
+      const btnRead = document.querySelector('button').addEventListener('click', () => {
+        console.log(getComputedStyle(document.documentElement).getPropertyValue('--primary-color'))
+      })
+
+      //use css variables to set a theme
+      const radioButtons = document.querySelectorAll('input[name="theme"]')
+
+      for (const radioButton of radioButtons) {
+        radioButton.addEventListener('change', (e) => {
+          console.log(e.target.value)
+
+          const theme = themes.find((theme) => theme.name === e.target.value)
+
+          document.documentElement.style.setProperty('--background-color', theme.colors.background)
+          document.documentElement.style.setProperty('--heading-background', theme.colors.headingBackground)
+          document.documentElement.style.setProperty('--heading-font', theme.colors.headingFont)
+          document.documentElement.style.setProperty('--primary-color', theme.colors.primaryColor)
+        })
+      }
+    </script>
+  </body>
+</html>
