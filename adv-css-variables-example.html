@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CSS Variables Example</title>
+    <style>
+      input {
+        margin: 0.25rem;
+      }
+
+      .input {
+        --border-color: #aaa;
+
+        border: 1px solid var(--border-color);
+        outline: none;
+        font-size: inherit;
+        padding: 0.5em;
+        border-radius: 0.2em;
+      }
+
+      .input:focus {
+        /* override the --border-color variable from the input class */
+        /* border-color: #0AF; */
+        /* box-shadow: 0 0 5px 0 #0AF; */
+        --border-color: #0af;
+        box-shadow: 0 0 5px 0 var(--border-color);
+      }
+
+      .input.input-success {
+        /* border-color: #27AE60; */
+        --border-color: #27ae60;
+      }
+
+      .input.input-success:focus {
+        /* border-color: #0F0; */
+        /* box-shadow: 0 0 5px 0 #0F0; */
+        /*only set border-color, box-shadow is inherited from .input */
+        --border-color: #0f0;
+      }
+
+      .input.input-error {
+        --border-color: #eb5757;
+      }
+
+      .input.input-error:focus {
+        --border-color: #f00;
+      }
+
+      .input.input-large {
+        font-size: 1.25rem;
+      }
+
+      .input.input-small {
+        font-size: 0.75rem;
+      }
+
+      .input:disabled {
+        background-color: #eaeaea;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" value="Default" class="input" />
+    <input type="text" value="Success" class="input input-success" />
+    <input type="text" value="Error" class="input input-error" />
+    <input type="text" value="Large" class="input input-large" />
+    <input type="text" value="Small" class="input input-small" />
+    <input type="text" value="Disabled" disabled class="input" />
+  </body>
+</html>
