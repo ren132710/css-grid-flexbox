@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation</title>
+    <style>
+      /* An animation lets an element gradually change from one style to another. */
+      /* CSS animation allows animation of HTML elements */
+      /* Animations consist of two steps, the CSS animation defined in stylesheets */
+      /* and a set of keyframes indicating the start and end states of the animation */
+      /* Animations can loop */
+      /* Animations are hard to work using Javascript */
+      /* Animations do not require a trigger */
+      /* Flexibility is provided by having multiple keyframes and looping */
+      div {
+        position: relative;
+        background-color: red;
+        height: 100px;
+        width: 100px;
+        color: white;
+      }
+
+      div:hover {
+        /* animation: name duration timing-function delay */
+        animation: color-change 1s linear 0.5s;
+      }
+
+      @keyframes color-change {
+        /* you can specify styles from 0% to 100% */
+        /* 0% defaults to existing values if not specified*/
+
+        100% {
+          background-color: green;
+          color: black;
+        }
+      }
+
+      .btn {
+        position: relative;
+        background-color: hsl(0, 0%, 92%);
+        box-shadow: 0 0 5px 0 hsl(0, 0%, 67%);
+        border-color: hsl(0, 0%, 50%);
+        color: black;
+        margin-top: 2rem;
+        outline: none;
+        cursor: pointer;
+        padding: 0.5em 1em;
+        border-radius: 0.3em;
+      }
+
+      .btn:focus {
+        /* animation-name */
+        /* animation-duration */
+        /* animation-timing-function */
+        /* animation-delay */
+        /* animation-fill-mode */ /* forwards, backwards, both, none */
+        /* animation-iteration-count */
+        /* animation-direction */ /* normal | alternate | reverse | alternate-reverse */
+
+        /* animation: aroundWorld 4s ease-in 0.5s none 3 alternate, size 4s linear 0.5s none 3 alternate; */
+        animation-name: aroundWorld, size;
+        animation-duration: 4000ms;
+        animation-timing-function: ease-in;
+        animation-delay: 0.5s;
+        animation-fill-mode: none;
+        animation-iteration-count: 3;
+        animation-direction: alternate;
+      }
+
+      .btn:hover {
+        /* pauses the animation when hovered */
+        animation-play-state: paused;
+      }
+
+      @keyframes aroundWorld {
+        /* you can specify styles from 0% to 100% */
+        /* the animated properties must be defined in the base element(s) */
+
+        /* from keyword: same as using 0% */
+        from {
+          background-color: hsl(0, 0%, 92%);
+          box-shadow: 0 0 5px 0 hsl(0, 0%, 67%);
+          border-color: hsl(0, 0%, 50%);
+          color: black;
+          left: 0px;
+          top: 0px;
+        }
+        25% {
+          background-color: hsl(271, 70%, 50%);
+          border-color: hsl(271, 70%, 30%);
+          box-shadow: 0 0 5px 0 hsl(271, 70%, 30%);
+          color: white;
+          left: 200px;
+          top: 0px;
+        }
+        50% {
+          background-color: hsl(200, 100%, 30%);
+          border-color: hsl(200, 100%, 20%);
+          box-shadow: 0 0 5px 0 hsl(200, 100%, 20%);
+          color: white;
+          left: 200px;
+          top: 200px;
+        }
+        75% {
+          background-color: hsl(0, 60%, 50%);
+          border-color: hsl(0, 60%, 30%);
+          box-shadow: 0 0 5px 0 hsl(0, 60%, 30%);
+          color: white;
+          left: 0px;
+          top: 200px;
+        }
+        /* to keyword: same as using 100% */
+        to {
+          background-color: hsl(0, 0%, 90%);
+          border: 1px solid hsl(0, 0%, 70%);
+          box-shadow: 0 0 5px 0 hsl(0, 0%, 70%);
+          color: white;
+          left: 0px;
+          top: 0px;
+        }
+      }
+
+      @keyframes size {
+        to {
+          /* WARNING: font-size, height, width, etc. is slow and computational heavy to animate because CSS has to recalculate the position of all other elements on the page */
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div">Div</div>
+    <button class="btn">I Can Move</button>
+  </body>
+</html>

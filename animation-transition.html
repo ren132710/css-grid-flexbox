@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS Transition</title>
     <style>
+      /* CSS transitions allows you to change property values smoothly, over a given duration. */
+      /* transitions always need to be triggered, like hover */
       .div {
         background-color: red;
         height: 100px;
@@ -13,6 +15,7 @@
         color: white;
         font-size: 0.75rem;
         text-align: center;
+        /* transition: property duration timing-function delay */
         /* transition: all 1s cubic-bezier(0.46, -0.09, 0.8, 0.51) 0.3s; */
 
         /* long form */
@@ -25,7 +28,7 @@
         transition: color 1s, background-color 3s;
         transition-property: color, background-color;
         transition-duration: 1s;
-        /* cubic-bezier presets: ease-in, ease-out, ease-in-out */
+        /* timing-function presets: ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier(n,n,n,n) */
         transition-timing-function: ease-in;
 
         /* you can experiment with cubic-bezier in chrome tools */
