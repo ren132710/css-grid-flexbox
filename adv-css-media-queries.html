@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Queries</title>
+    <style>
+      div {
+        font-weight: bold;
+        font-size: 300%;
+        color: green;
+      }
+
+      /* when device is printer, do: */
+      @media print {
+        div {
+          color: blue;
+        }
+      }
+
+      /* when device is screen and viewport >= 400px, do: */
+      @media screen and (min-width: 400px) {
+        div {
+          font-size: 400%;
+          text-transform: uppercase;
+          color: skyblue;
+        }
+      }
+
+      /* when device is screen and viewport <= 300px, do: */
+      @media screen and (max-width: 300px) {
+        div {
+          font-size: 200%;
+          text-transform: lowercase;
+          color: red;
+          opacity: 0.5;
+        }
+      }
+
+      /* when device is screen and viewport <= 250px, do: */
+      /* NOTE: because of cascade, sequence of media queries is important */
+      /* because this is smallest <=, it needs to be lower in the cascade */
+      /* implied: all, and */
+      @media (max-width: 250px) {
+        div {
+          font-size: 100%;
+          font-style: italics;
+          font-size: 0.75rem;
+          color: #ccc;
+        }
+      }
+
+      /* when screen width > screen length, do: */
+      /* works in tandem with the above media queries */
+      /* useful for mobile experiences */
+      @media (orientation: landscape) {
+        div {
+          text-align: center;
+        }
+      }
+
+      /* use comma for specifying OR */
+      /* @media (min-width: 800px), (orientation: landscape) {
+        div {
+          color: yellow;
+        }
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="div">Div</div>
+  </body>
+</html>
