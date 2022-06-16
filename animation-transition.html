@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Transition</title>
+    <title>CSS Transition</title>
     <style>
       .div {
         background-color: red;
@@ -14,8 +14,10 @@
         font-size: 0.75rem;
         text-align: center;
         /* transition: all 1s cubic-bezier(0.46, -0.09, 0.8, 0.51) 0.3s; */
+
+        /* long form */
         /* transition-property: all;
-        transition-duration: 2s;
+        transition-duration: 1s;
         transition-timing-function: cubic-bezier(0.46, -0.09, 0.8, 0.51);
         transition-delay: 0.3s; */
 
@@ -43,6 +45,7 @@
       }
 
       .btn {
+        background-color: hsl(200, 100%, 50%);
         border: none;
         outline: none;
         cursor: pointer;
@@ -52,23 +55,30 @@
       }
 
       .btn-hide {
-        /* opacity: .7; */
-        background-color: hsl(200, 100%, 80%);
+        /* my solution */
+        /* background-color: hsl(200, 100%, 80%); */
+
+        opacity: 0.6;
       }
 
       .btn-hide:hover {
-        /* opacity: 1; */
-        background-color: hsl(200, 100%, 40%);
-        /* transition-duration: 3s; */
-        transition: background-color 3000ms;
+        /* onClick, fade the button brighter */
+        opacity: 1;
+        transition: opacity 3000ms;
+
+        /* my solution */
+        /* background-color: hsl(200, 100%, 40%); */
+        /* transition: background-color 3000ms; */
       }
 
       .btn-hide:focus {
         /* onClick, hide the button */
-        /* opacity: 0; */
-        background-color: hsl(200, 100%, 100%);
-        /* transition-duration: 0.1s; */
-        transition: background-color 100ms;
+        opacity: 0;
+        transition: opacity 100ms;
+
+        /* my solution */
+        /* background-color: hsl(200, 100%, 100%); */
+        /* transition: background-color 100ms; */
       }
 
       .btn-change-color {
