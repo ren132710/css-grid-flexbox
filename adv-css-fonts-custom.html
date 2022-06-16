@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Fonts</title>
+    <style>
+      /* you can provide any font-family name you want */
+      @font-face {
+        font-family: Euclid;
+        src: url('./fonts/euclid-circular-a.woff2') format('woff2'), url('/fonts/euclid-circular-a.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+
+        /* 
+        The font-display descriptor determines how a font face is displayed
+        based on whether and when it is downloaded and ready to use.
+
+        font-display: auto; //strategy defined by user agent
+        font-display: block; //short block period, infinite swap period
+        font-display: swap; //extremely small block period, infinite swap period
+        font-display: fallback; //extremely small block period, short swap period
+        font-display: optional; //extremely small block period, no swap period
+        */
+
+        /* swap is recommended and is the default of google fonts */
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: Poppins;
+        src: url('./fonts/Poppins-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: Poppins;
+        src: url('./fonts/Poppins-Bold.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: Poppins;
+        src: url('./fonts/Poppins-Italic.ttf') format('truetype');
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: Poppins;
+        src: url('./fonts/Poppins-BoldItalic.ttf') format('truetype');
+        font-weight: bold;
+        font-style: italic;
+        font-display: swap;
+      }
+
+      body {
+        /* font-family name must match name in @font-face */
+        /* if Euclid fails to load, fall back to Poppins, then sans-serif */
+        font-family: Euclid, Poppins, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente vel aspernatur deserunt architecto adipisci
+    doloribus, dolorum quam neque tempore, recusandae accusantium assumenda, officia necessitatibus ipsam quidem dolor
+    quos reprehenderit quisquam molestiae enim? Voluptatem consectetur a assumenda cum, ipsa odio repudiandae velit hic
+    repellendus dolorem amet ipsam aliquam distinctio autem excepturi est! Deleniti quos quae praesentium doloribus,
+    excepturi rem odit dolores, molestiae, cum quasi accusantium rerum unde facilis! Illum eveniet quas dolore
+    praesentium. Debitis, illum? Assumenda!
+  </body>
+</html>
