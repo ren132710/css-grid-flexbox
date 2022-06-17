@@ -34,6 +34,7 @@
 
       /* now use pseudo element to create a custom checkbox */
       /* since ::before is a child of the label we can align it using flexbox (above) */
+      /* select the sibling label::before of the hidden checkbox */
       .custom-checkbox + label::before {
         content: '';
         /* use em so checkbox size scales with label font-size */
