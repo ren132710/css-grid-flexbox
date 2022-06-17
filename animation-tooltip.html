@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tooltips</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin-top: 100px;
+      }
+
+      /* select all tooltips with the [data-tooltip] attribute*/
+      [data-tooltip] {
+        /* enable absolute positioning of tooltip inside [data-tooltip] element */
+        position: relative;
+      }
+
+      [data-tooltip]::before,
+      [data-tooltip]::after {
+        /* extract the common properties from ::before and ::after pseudo elements*/
+        /* the scope of these variables is [data-tooltip]:hover::before and ::after */
+        --tooltip-color: #333;
+        --arrow-size: 0.5rem;
+        /* for animation, start scale at 0 */
+        --scale: 0;
+
+        position: absolute;
+        /* TIP: How to center a pseudo element tooltip with its parent */
+        /* shift left edge of tooltip text to middle of parent's content box */
+        left: 50%;
+        /* then shift center of tooltip text left -50% on x-axis.
+        translate is based on the pseudo elem's size */
+        transform: translate(-50%, var(--translate-y)) scale(var(--scale));
+
+        transition: transform 200ms;
+        /* when un-hovering, use linear timing function */
+        transition-timing-function: linear;
+      }
+
+      [data-tooltip]:hover::before,
+      [data-tooltip]:hover::after {
+        --scale: 1;
+
+        /* when hovering, give bounce at the end transition using cubic-bezier */
+        transition-timing-function: cubic-bezier(0.25, 0.1, 0.45, 1.93);
+      }
+
+      [data-tooltip]::before {
+        --translate-y: calc(-100% - var(--arrow-size));
+
+        content: attr(data-tooltip);
+        background-color: var(--tooltip-color);
+        color: white;
+        padding: 0.5em;
+        border-radius: 0.3em;
+        /* set width of tooltip to max size of content to prevent wrapping */
+        width: max-content;
+        /* force wrap if pseudo elem tooltip text is > then the width of its parent */
+        max-width: 100%;
+        text-align: center;
+
+        /* set the origin of ::before to meet the top edge of arrow */
+        transform-origin: bottom center;
+      }
+
+      [data-tooltip]::after {
+        /* create a negative param */
+        --translate-y: calc(-1 * var(--arrow-size));
+
+        content: '';
+        /* TIP: method for creating a downward facing arrow / triangle ***/
+        /* content = ''; so content box has no content size */
+        /* set a border width, this will become the size of the arrow / triangle  */
+        /* make the border transparent */
+        border: var(--arrow-size) solid transparent;
+        /* add the top border back, width of border will determine arrow size */
+        border-top-color: var(--tooltip-color);
+
+        /* set the origin of ::after to meet the bottom edge of tooltip */
+        transform-origin: top center;
+      }
+    </style>
+  </head>
+  <body>
+    <span data-tooltip="This is a tooltip">Hover me for more information</span>
+  </body>
+</html>
