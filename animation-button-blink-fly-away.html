@@ -16,6 +16,8 @@
         align-items: center;
         min-height: 100vh;
         margin: 0;
+        /* prevents scroll bar from appearing if button
+        if thrown off screen */
         overflow: hidden;
       }
 
@@ -34,6 +36,8 @@
       }
 
       .btn:focus {
+        /* forwards: styling at the end of the animation remains applied */
+        /* otherwise the button will jump back to its initial styling state */
         animation: fly-away 500ms ease-in-out forwards;
       }
 
