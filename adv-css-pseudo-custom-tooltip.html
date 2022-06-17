@@ -36,10 +36,10 @@
 
         /* TIP: How to center a pseudo element tooltip with its parent */
         position: absolute;
-        /* shift left edge of tooltip text to middle of parent elem's content box */
+        /* shift left edge of tooltip text to middle of parent's content box */
         left: 50%;
         /* then shift center of tooltip text left -50% on x-axis.
-        translate is based on the psuedo elem's size */
+        translate is based on the pseudo elem's size */
         transform: translate(-50%, var(--translate-y));
       }
 
@@ -56,7 +56,7 @@
         border-radius: 0.3em;
         /* set width of tooltip to max size of content to prevent wrapping */
         width: max-content;
-        /* wrap if tooltip text is > then the width of its containing (<span>) */
+        /* force wrap if tooltip text is > then the width of its parent */
         max-width: 100%;
         text-align: center;
       }
