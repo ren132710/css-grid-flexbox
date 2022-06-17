@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Loading...</title>
+    <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        /* prevents scroll bar from appearing if button
+              if thrown off screen */
+        overflow: hidden;
+      }
+
+      .btn-load {
+        position: relative;
+        color: white;
+        background-color: hsl(200, 100%, 50%);
+        border: none;
+        outline: none;
+        padding: 0.5em 1em;
+        border-radius: 0.3em;
+        cursor: pointer;
+      }
+
+      .btn-load:focus::before {
+        --default-transform: translateY(200%);
+        content: 'Loading';
+        position: absolute;
+        color: #666;
+        font-size: 0.85em;
+        left: 0;
+        bottom: 0;
+        /* left, right, center, left 50px, top left, bottom right, etc */
+        transform-origin: center;
+        transform: var(--default-transform);
+        animation: loading 2000ms linear forwards;
+      }
+
+      @keyframes loading {
+        from {
+          opacity: 1;
+        }
+
+        10% {
+          content: 'Loading.';
+        }
+        20% {
+          content: 'Loading..';
+        }
+        25% {
+          /* must redeclare the translateY transform */
+          transform: var(--default-transform) rotate(30deg);
+        }
+
+        30% {
+          content: 'Loading...';
+        }
+        40% {
+          content: 'Loading..';
+        }
+        50% {
+          content: 'Loading.';
+          opacity: 0.6;
+          /* must redeclare the translateY transform */
+          transform: var(--default-transform) rotate(0);
+        }
+        60% {
+          content: 'Loading';
+        }
+        70% {
+          content: 'Loading.';
+        }
+        75% {
+          /* must redeclare the translateY transform */
+          transform: var(--default-transform) rotate(-30deg);
+        }
+        80% {
+          content: 'Loading...';
+        }
+
+        to {
+          content: 'Loaded';
+          opacity: 1;
+          /* must redeclare the translateY transform */
+          transform: var(--default-transform) rotate(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn btn-load">Click to Load</button>
+  </body>
+</html>
