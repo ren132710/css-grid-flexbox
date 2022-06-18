@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perspective</title>
+    <style>
+      .div1 {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        /* width: 90vw;
+        height: 50vh; */
+        border: 1px solid blue;
+        margin: 10px;
+        /* set the perspective for the container */
+        /* all children share the same vanishing point */
+        /* user is 100px from the screen (z plane) */
+        perspective: 100px;
+        perspective-origin: top right;
+      }
+
+      .divs {
+        /* position: absolute; */
+        background: rgba(255, 0, 0, 0.7);
+        /* background-color: red; */
+        height: 50px;
+        width: 50px;
+        margin: 10px;
+        /* The perspective CSS property determines the distance
+        between the z=0 plane and the user in order to give a
+        3D-positioned element some perspective.*/
+        /* rotateX(): rotates along the x-axis */
+        /* transform: perspective(50px) rotateX(45deg); */
+        transform: rotateX(45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div1">
+      <div class="divs">div</div>
+      <div class="divs">div</div>
+      <div class="divs">div</div>
+      <div class="divs">div</div>
+      <div class="divs">div</div>
+      <div class="divs">div</div>
+      <div class="divs">div</div>
+      <div class="divs">div</div>
+    </div>
+  </body>
+</html>
