@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Rotating Cube</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        perspective: 400px;
+      }
+
+      .cube {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Lets the transformed child elements preserve the 3D transformations: */
+        transform-style: preserve-3d;
+      }
+
+      .cube:hover {
+        animation: spin 5s linear infinite;
+      }
+
+      .side {
+        --size: 75px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: var(--size);
+        height: var(--size);
+        /* initially, absolute stacks all sides on top of each other */
+        position: absolute;
+        background-color: hsla(200, 100%, 50%, 0.5);
+        border: 1px solid hsla(200, 100%, 10%, 0.5);
+
+        /* Rotate each side X or Y, then translate side on z-axis till the side is moved to the correct side of the cube. */
+        transform: rotateY(var(--rotate-y, 0)) rotateX(var(--rotate-x, 0)) translateZ(calc(var(--size) / 2));
+      }
+
+      .right {
+        --rotate-y: 90deg;
+      }
+
+      .left {
+        --rotate-y: -90deg;
+      }
+
+      .top {
+        --rotate-x: 90deg;
+      }
+
+      .bottom {
+        --rotate-x: -90deg;
+      }
+
+      .back {
+        --rotate-y: 180deg;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotateX(0) rotateY(0);
+        }
+
+        100% {
+          transform: rotateX(360deg) rotateY(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cube">
+      <div class="side front">Front</div>
+      <div class="side left">Left</div>
+      <div class="side right">Right</div>
+      <div class="side back">Back</div>
+      <div class="side top">Top</div>
+      <div class="side bottom">Bottom</div>
+    </div>
+  </body>
+</html>
