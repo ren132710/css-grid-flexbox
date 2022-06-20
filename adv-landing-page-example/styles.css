@@ -1,0 +1,435 @@
+/* 
+Tip: Aim to keep animations modest/subtle so user is not distracted from content of page
+1) Smooth hover transition for NavList links
+2) Smooth hover transition for buttons
+3) Smooth focus transition for Contact input boxes
+4) Scale pricing card when hovered
+5) Scale first pricing card from right so growth does not cover center card
+6) Scale last pricing card from left so growth does not cover center card
+7) Scale first/last pricing card from center for mobile
+8) Shake curriculum image when item is hovered
+9) Animate scroll down icon
+10) Grow the Learn More button
+
+Stagger the page load animations:
+11) Fly in titles
+12) Fly in NavBar
+13) Fade in Learn More button
+14) Fade in Scroll Down arrow with spin
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  color: #1b2522;
+
+  --title-duration: 500ms;
+  --sub-title-duration: 500ms;
+  --nav-duration: 200ms;
+  --btn-grow-duration: 200ms;
+  --scroll-down-duration: 200ms;
+  /* stagger the page load animations using durations */
+  --sub-title-delay: calc(var(--title-duration) - 200ms);
+  /* start nav/learn/scroll down animations once subtitle animation is complete */
+  --nav-delay: calc(var(--sub-title-delay) + var(--sub-title-duration));
+  --btn-grow-delay: var(--nav-delay);
+  --scroll-down-delay: var(--nav-delay);
+}
+
+.full-screen-header {
+  height: 100vh;
+  background-image: url('img/header_image.jpg');
+  background-size: cover;
+  background-position-x: 40%;
+  background-position-y: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  position: relative;
+  /* prevent scroll bar when animated title and subtitle are off screen */
+  overflow: hidden;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b2522;
+  padding: 0.5rem 1rem;
+}
+
+.nav-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  /* 12) Fly in NavBar */
+  /* backwards so animation begins with nav off of screen */
+  animation: nav-enter var(--nav-duration) var(--nav-delay) backwards;
+}
+
+.logo {
+  width: 50px;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-list a {
+  text-decoration: none;
+  margin-left: 1rem;
+  color: white;
+
+  /* 1) Smooth hover transition for NavList links */
+  transition: color 1000ms;
+}
+
+.nav-list a:hover {
+  color: #ccc;
+}
+
+.title {
+  font-size: 3rem;
+  margin: 0;
+
+  /* 11) Fly in title on page load */
+  animation: title-enter var(--title-duration);
+}
+
+.sub-title {
+  font-size: 1.5rem;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+
+  /* 11) Fly in subtitle on page load */
+  /* fill-mode = backwards, so subtitle does not appear until animation fires */
+  animation: sub-title-enter var(--sub-title-duration) var(--sub-title-delay) backwards;
+}
+
+.btn {
+  background-color: hsl(200, 100%, 50%);
+  color: white;
+  border-radius: 10000px;
+  padding: 0.25em 1em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+
+  /* 2) Smooth hover transition for buttons */
+  transition: 100ms;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: hsl(200, 100%, 40%);
+}
+
+.scroll-down-icon {
+  position: absolute;
+  bottom: 1rem;
+  width: 30px;
+
+  /* 9) scroll down animation */
+  /* delay bounce animation until fade in animation completes */
+  animation: scroll-down-bounce calc(var(--scroll-down-duration) + var(--scroll-down-delay)) 1s alternate infinite
+      linear,
+    /* 14) Fade in Scroll Down arrow with spin */ scroll-down-enter var(--scroll-down-duration) var(--scroll-down-delay)
+      backwards;
+}
+
+.section {
+  padding: 2rem;
+}
+
+.section-title {
+  margin: 0;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  color: black;
+}
+
+.curriculum-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, 450px));
+  justify-content: center;
+  row-gap: 10px;
+  column-gap: 50px;
+}
+
+.curriculum-grid-item {
+  display: flex;
+  align-items: center;
+}
+
+.curriculum-grid-item:hover img {
+  /* 8) Shake curriculum image when item is hovered */
+  animation: shake 100ms;
+}
+
+.curriculum-grid-item img {
+  width: 50px;
+  margin-right: 1rem;
+}
+
+.section-accent {
+  background-color: #0af;
+}
+
+.form {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form label {
+  color: black;
+  font-weight: bold;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  outline: none;
+  border: 1px solid #1b2522;
+  border-radius: 0.3em;
+  padding: 0.5em;
+  color: inherit;
+  font-family: inherit;
+
+  /* 3) Smooth focus transition for Contact input boxes */
+  transition: border-color 100ms;
+}
+
+.form textarea {
+  resize: vertical;
+  min-height: 75px;
+  max-height: 200px;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: #0af;
+}
+
+.btn-container {
+  text-align: end;
+}
+
+.btn-square {
+  border-radius: 0.3em;
+}
+
+.pricing-cards-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pricing-card {
+  padding: 1rem;
+  background-color: #dcf4ff;
+  border: 1px solid black;
+  border-radius: 0.3em;
+  margin: 1rem 0;
+
+  /* 4) Scale pricing card when hovered */
+  transition: transform 100ms;
+}
+
+.pricing-card:hover {
+  transform: scale(1.05);
+}
+
+.pricing-card.accent {
+  background-color: white;
+  margin: 0;
+}
+
+.pricing-card:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  /* 5) Scale pricing card from right so growth does not cover center card */
+  transform-origin: right;
+}
+
+.pricing-card:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: none;
+  /* 6) Scale pricing card from left so growth does not cover center card */
+  transform-origin: left;
+}
+
+.price-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.plan-name {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.plan-price {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.plan-price::after {
+  content: '/mo';
+  font-size: 0.75rem;
+  color: #777;
+}
+
+.feature {
+  margin-bottom: 0.5rem;
+}
+
+.feature.inactive {
+  color: #777;
+  text-decoration: line-through;
+}
+
+.feature:last-child {
+  margin-bottom: 0;
+}
+
+.btn-grow {
+  /* 13) Fade in Learn More button on page load */
+  animation: btn-grow-enter var(--btn-grow-duration) var(--btn-grow-delay) backwards;
+}
+
+.btn-grow:hover {
+  /* 9) Grow button when hovered */
+  transform: scale(1.1);
+  /* box shadow produces effect of button lifting off of page */
+  /* h-offset: A positive value puts the shadow on the right side of the box, a negative value puts the shadow on the left side of the box */
+  /* v-offset: A positive value puts the shadow below the box, a negative value puts the shadow above the box */
+  /* blur:  The higher the number, the more blurred the shadow will be */
+  /* spread: A positive value increases the size of the shadow, a negative value decreases the size of the shadow */
+  /* color: The color of the shadow. The default value is the text color */
+  /* inset: Optional. Changes the shadow from an outer shadow (outset) to an inner shadow */
+  box-shadow: 0 2px 5px 1px black;
+}
+
+@keyframes scroll-down-bounce {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shake {
+  /* 
+  0% - upright
+  25% - rotate right
+  50% - upright
+  75% - rotate left
+  100% - upright
+  */
+  25% {
+    /* Tip: keep animations modest/subtle,
+    so user is not distracted from content of page */
+    transform: rotate(5deg);
+  }
+
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+/* 11) Fly in title and subtitle on page load */
+@keyframes title-enter {
+  from {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes sub-title-enter {
+  from {
+    transform: translateX(100vw);
+  }
+}
+
+/* 12) Fly in NavBar */
+/* -100% means height of navBar off of screen */
+@keyframes nav-enter {
+  from {
+    transform: translateY(-100%);
+  }
+}
+
+/* 13) Fade in Learn More button */
+@keyframes btn-grow-enter {
+  from {
+    transform: scale(0);
+  }
+}
+/* 14) Fade in Scroll Down arrow with spin */
+@keyframes scroll-down-enter {
+  from {
+    transform: scale(0) rotate(180deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .curriculum-grid {
+    grid-template-columns: minmax(auto, 450px);
+    row-gap: 30px;
+  }
+
+  .full-screen-header {
+    background-position-x: 65%;
+  }
+
+  .pricing-cards-container {
+    flex-wrap: wrap;
+  }
+
+  .pricing-card,
+  .pricing-card.accent {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  .pricing-card:first-child,
+  .pricing-card:last-child {
+    border-radius: 0.3em;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    /* 7) Scale first/last pricing card from center for mobile */
+    transform-origin: center;
+  }
+
+  .pricing-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .feature {
+    text-align: center;
+  }
+
+  .feature.inactive {
+    display: none;
+  }
+}
