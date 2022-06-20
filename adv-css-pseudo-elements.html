@@ -82,6 +82,29 @@
         height: 50px;
         text-align: center;
       }
+
+      .text {
+        position: relative;
+        width: 50%vw;
+      }
+
+      .text::before {
+        content: 'before';
+        color: orange;
+
+        /* TIP: How to center a pseudo element tooltip with its parent */
+        /* position: absolute; */
+        /* shift left edge of tooltip text to middle of parent's content box */
+        /* left: 50%; */
+        /* then shift center of tooltip text left -50% on x-axis.
+        translate is based on the pseudo elem's size */
+        /* transform: translate(-50%); */
+      }
+
+      .text::after {
+        content: 'after';
+        color: purple;
+      }
     </style>
   </head>
   <body>
@@ -91,5 +114,7 @@
       sequi possimus odio ullam sit, est facere et animi repudiandae.
     </p>
     <div class="box" data-text="hi">some text</div>
+    <br />
+    <div class="text">Note the location of the before and after pseudo elements</div>
   </body>
 </html>
