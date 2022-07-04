@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG Intro</title>
+    <style>
+      /* viewport is the 'window' of our svg image */
+      /* the viewport is the viewable area */
+      /* elements must be inside the viewport to be seen */
+
+      /* viewBox is the tool we use to scale and position the image wrt viewport */
+      /* viewBox use case: cropping images, animations */
+
+      /* https://www.digitalocean.com/community/tutorials/svg-svg-viewbox */
+      /* https://www.youtube.com/watch?v=TBYJ2V1jAlA */
+
+      .div1 {
+        width: 400px;
+        height: 400px;
+        background-color: #ddd;
+        border: 2px solid blue;
+      }
+      .svg1 {
+        width: 400px;
+        height: 400px;
+        border: 2px solid red;
+      }
+
+      .div2 {
+        border: 2px solid blue;
+      }
+
+      .svg2 {
+        width: 300px;
+        height: 300px;
+        border: 2px solid red;
+      }
+
+      .div3 {
+        border: 2px solid blue;
+      }
+
+      .svg3 {
+        width: 300px;
+        height: 300px;
+        border: 2px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div1">
+      <!-- the svg will scale to the dimensions of the div -->
+      <svg class="svg1">
+        <!-- default units are pixels -->
+        <!-- rectangles are position from top left -->
+        <!-- rx = rounded corners -->
+        <rect rx="75" ry="75" x="0" y="0" height="400" width="400" fill="lightblue" />
+        <!-- layering of shapes occurs in order of declaration -->
+        <circle r="200" cx="200" cy="200" fill="none" stroke="black" stroke-width="5" />
+        <circle r="70" cx="150" cy="125" fill="none" stroke="black" stroke-width="5" />
+        <!-- y1: start of line, y2: end of line -->
+        <!-- <line x1="125" y1="25" x2="125" y2="225" stroke="black" stroke-width="5" /> -->
+        <!-- points: x,y x,y etc. -->
+        <!-- polygons are made up of straight lines, no curves -->
+        <polygon fill="lightgreen" points="50,50 200,200 350,50 350,350 200,200 50,350" />
+        <!-- path can be used to create lines, curves, arcs, etc -->
+        <!-- fill="transparent" or fill="none" to eliminate filling in curve-->
+        <!-- typically paths are built using tools like illustrator -->
+        <path d="M 10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80" stroke="blue" stroke-width="3" fill="transparent" />
+      </svg>
+    </div>
+    <br />
+    <!-- the viewBox controls what is inside the viewable area -->
+    <!-- viewBox="min-x-coord min-y-coord width height" -->
+    <!-- first two params are starting coordinates of viewBox, typically 0,0 -->
+    <!-- think of these as panning the viewport around the svg -->
+    <!-- viewBox="150,150,x,x" translates svg *as if* the top left corner of viewPort -->
+    <!-- is starting to right 150 (x = 150) and down 150 (y=150)  -->
+    <!-- this is why the svg is only partially visible in the viewPort -->
+    <!-- NOTE: however, the viewPort DOES NOT change position on the screen, only the SVG moves in relation to the viewport -->
+    <div class="div2">
+      <svg viewBox="150 150 300 300" class="svg2">
+        <circle r="150" cx="150" cy="150" fill="lightblue" />
+      </svg>
+    </div>
+    <br />
+    <!-- the 3rd and 4th params control zoom-in and zoom-out -->
+    <!-- making the viewBox smaller, makes the svg elements larger -->
+    <!-- making the viewBox larger, makes the svg elements smaller -->
+    <div class="div3">
+      <!-- makes the circle smaller and re-centers wrt viewport -->
+      <svg viewBox="-150 -150 600 600" class="svg3">
+        <circle r="75" cx="150" cy="150" fill="lightblue" />
+      </svg>
+    </div>
+  </body>
+</html>
