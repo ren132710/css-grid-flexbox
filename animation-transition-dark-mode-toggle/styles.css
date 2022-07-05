@@ -1,0 +1,115 @@
+body {
+  --accent-color: orangered;
+  --background-color: white;
+  --text-color: black;
+  --button-text-color: var(--background-color);
+  --transition-delay: 1s;
+  --transition-duration: 1s;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  /* hide the offscreen content (the 200vmin container), eliminates vertical scroll bar */
+  overflow: hidden;
+
+  transition: var(--transition-delay);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+body.dark {
+  --accent-color: #d0d066;
+  --background-color: #333;
+  --text-color: white;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.theme-toggle-button {
+  background-color: var(--accent-color);
+  color: var(--button-text-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  border: none;
+  outline: none;
+  /* transition: var(--transition-delay); */
+  transition: var(--transition-duration);
+  /* baseline the transform to ensure it returns to original size */
+  transform: scale(1);
+}
+
+.theme-toggle-button .icon {
+  margin-right: 0.5em;
+}
+
+.theme-toggle-button:hover,
+.theme-toggle-button:focus {
+  transform: scale(1.1);
+}
+
+.sun-moon-container {
+  --rotation: 0;
+
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  /* vmin: viewport min, height or width, whichever is smaller */
+  height: 200vmin;
+  /* convert to degrees so we can parse as degrees in js */
+  transform: rotate(calc(var(--rotation) * 1deg));
+  transition: transform var(--transition-delay);
+}
+
+/* select .sun-moon-container as descendant of .dark */
+/* however, we want to constantly rotate to the right */
+/* so we want to add 180 to the rotation dynamically, which we can do with js */
+/* .dark .sun-moon-container {
+  --rotation: 180;
+} */
+
+.sun,
+.moon {
+  position: absolute;
+  /* only transition opacity and fill */
+  transition: opacity, fill, var(--transition-delay);
+  width: 30px;
+  height: 30px;
+  /* svg color property */
+  fill: var(--accent-color);
+}
+
+.sun {
+  top: 5%;
+  opacity: 1;
+}
+
+.dark .sun {
+  opacity: 0;
+}
+
+.moon {
+  /* default: position moon is offscreen, 5% above vmin container border */
+  bottom: 5%;
+  /* hide the moon when screen is so narrow that 200vmin is smaller than viewport height */
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+.dark .moon {
+  /* show moon in dark mode, when moon is at top of screen */
+  opacity: 1;
+}
