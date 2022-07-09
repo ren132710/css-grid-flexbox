@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Centering Elements</title>
+    <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+      }
+
+      /* For more examples, see: https://blog.logrocket.com/13-ways-vertically-center-html-elements-css/ */
+
+      .container {
+        position: relative;
+        border: 1px solid black;
+        width: 500px;
+        height: 500px;
+      }
+
+      .div0 {
+        /* position: absolute; transform: translate; */
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background-color: #2185c5;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      .div1 {
+        /* position: absolute; margin: auto; */
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        /* height and width must be declared */
+        width: 300px;
+        height: 300px;
+        /* flexbox centers div's children  */
+        display: flex;
+        /* Typical way to center children of a flex container */
+        /* justify-content: center; */
+        /* align-items: center; */
+        background-color: yellowgreen;
+      }
+
+      .div2 {
+        /* Tip: when display: flex; (or display: grid;) you can use margin: auto; to center vertically and horizontally */
+        /* however, only works with a single child element */
+        margin: auto;
+        width: 200px;
+        height: 200px;
+        background-color: orchid;
+        /* grid also centers div's children  */
+        display: grid;
+        /* Typical way to center children of a grid container */
+        /* justify-content: center; */
+        /* align-content: center; */
+      }
+
+      .div3 {
+        margin: auto;
+        width: 100px;
+        height: 100px;
+        background-color: lightgray;
+        /* using grid with pseudo elements  */
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+      }
+
+      .div3::before,
+      .div3::after {
+        content: '';
+      }
+
+      .div4 {
+        margin: auto;
+        width: 50px;
+        height: 50px;
+        background-color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="div0">
+        <div class="div1">
+          <div class="div2">
+            <div class="div3">
+              <div class="div4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
