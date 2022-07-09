@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid | Margin Auto</title>
+    <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+      }
+
+      .grid-page-container {
+        display: grid;
+        border: 1px solid blue;
+      }
+
+      .grid-page-frame {
+        width: 95%;
+        margin: 0 auto;
+        display: grid;
+        grid-gap: 1.5rem;
+        grid-template-rows: 2rem minmax(120px, auto) 1fr 80px 2rem;
+      }
+
+      .section {
+        border: 1px solid #ccc;
+      }
+
+      .spacer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container-search-places {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-areas:
+          'search'
+          'places';
+      }
+
+      .search {
+        grid-area: search;
+        background-color: lightblue;
+      }
+
+      .places {
+        grid-area: places;
+        background-color: lightgreen;
+      }
+
+      .main {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-areas:
+          'current'
+          'daily'
+          'hourly';
+      }
+
+      .current {
+        grid-area: current;
+        background-color: lightcoral;
+        height: 100px;
+      }
+
+      .daily {
+        grid-area: daily;
+        background-color: lightcyan;
+        height: 100px;
+      }
+
+      .hourly {
+        grid-area: hourly;
+        background-color: lightskyblue;
+        height: 300px;
+      }
+
+      .footer {
+        background-color: lightpink;
+      }
+
+      .gutter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @media screen and (min-width: 768px) {
+        .container-search-places {
+          grid-template-columns: 1fr 1.618fr;
+          grid-template-areas: 'search places';
+        }
+
+        .main {
+          grid-template-columns: 1fr 1.618fr;
+          /* grid-template-rows: auto; */
+          grid-template-areas:
+            'current daily'
+            'hourly hourly';
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-page-container">
+      <div class="grid-page-frame">
+        <div class="section spacer">spacer</div>
+        <div class="section container-search-places">
+          <div class="search">search</div>
+          <div class="places">places</div>
+        </div>
+        <div class="section main">
+          <div class="current">current</div>
+          <div class="daily">daily</div>
+          <div class="hourly">hourly</div>
+        </div>
+        <div class="section footer">footer</div>
+        <div class="section gutter">gutter</div>
+      </div>
+    </div>
+  </body>
+</html>
