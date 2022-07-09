@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<body>
+  <div id="menu">
+    <button data-action="save">Save</button>
+    <button data-action="load">Load</button>
+    <button data-action="search">Search</button>
+  </div>
+
+  <script>
+    class Menu {
+      constructor(elem) {
+        console.log('this: ', this)
+        this.elem = elem
+        console.log('this.elem: ', this.elem)
+        console.log('this.onClick.bind(this): ', this.onClick.bind(this)) // (*)
+
+        //bind the elem's onclick event to the class onClick method
+        elem.onclick = this.onClick.bind(this)
+
+        // can also work with other DOM events - e.g.,
+        // elem.onmouseover = this.onClick.bind(this)
+      }
+
+      save() {
+        alert('saving')
+      }
+
+      load() {
+        alert('loading')
+      }
+
+      search() {
+        alert('searching')
+      }
+
+      #sayHello(action) {
+        console.log('called from sayHello: ', action)
+      }
+
+      onClick(event) {
+        let action = event.target.dataset.action
+        console.log('action:', action)
+        if (action) {
+          this[action]()
+          console.log('this[action]():', this[action])
+          this.#sayHello(action)
+        }
+      }
+    }
+
+    //since id is unique to the DOM you can simply use it to instantiate the class
+    new Menu(menu)
+
+    // you can also instantiate the class using a selector
+    // const test = document.querySelector('#menu')
+    // new Menu(test)
+  </script>
+</body>
